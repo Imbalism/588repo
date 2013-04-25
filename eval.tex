@@ -1,5 +1,18 @@
 \section{Evaluation}
 \label{sec:eval}
 
-We plan to evaluate our attack method against other DNS rebinding approaches. We hope to measure two primary factors. We plan to analyze the \emph{time to complete} of the attack and the \emph{impact} of the attack. We suspect, for example, that a multiple A record attack will finish quickly but have limited impact due to how browsers handle it. On the other hand, a time-varying attack that establishes an interactive session could take more time to complete, but could do be much more damaging. While the \emph{time to complete} will be a quantitative metric, we suspect that \emph{impact} will be a more abstract, qualitative result.
+We developed a proof-of-concept exploits for DNS flooding based rebinding vulnerabilities using pure Javascript and HTML5. Our system consists of a custom DNS server authoritative for takenoteswith.us.
 
+We measured our DNS rebinding attack by two primary factors. We analyzed the \emph{time to launch} of the attack and the \emph{impact} of the attack. We compared it two DNS rebinding mechanisms we've implemented. 
+
+\subsection{Time to Launch}
+To protect from a time-varying attack that is able to establish an interactive session between the malicious server and the broswer, most modern browers have implemented DNS pinning that pin a DNS record for a period of time. At this time, a time-varying attack would take ~160 seconds to launch according to our experiment on the latest Chrome browser. However, by flooding the DNS table, we found that in the current Chrome implementation, if a DNS record is kicked out from the cache, the pinning time would dramatically decrease. We found that in our attack, only ~10 seconds is needed to launch the attack on a browser that have 100 entries. 
+
+In early 2013, the Chromium community has increased the size of DNS cache from 100 to 1000. This is not a really security patch but a performance related patch. We then ran our experiments on the staging version Chrome, and found that it would only take 10 more seconds to flood the DNS table and launch the attack. 
+
+Another approach of DNS rebinding is based on multiple A records attack. This attack needs only a small amount of time due to the number of packets transmitted, however this attack has certain limitations, we will discuss it in the next subsection.
+
+\subsection{Impact}
+We now evaluate the impact of our attack against other DNS rebinding approaches. As mentioned in the last section, the multiple DNS record approach has the advantage of using less time to launch. However, it has several limitations on its impacts. 1) The rebinded IP address cannot be an internal IP address, otherwise the browser will priorize it and select it in the first place which results in a failure in DNS rebinding.  2) The attacker cannot change the rebinded IP address on the fly. 
+
+Being unable to rebind to an internal IP address greatly limit the impact that multiple A records attack can achieve.
