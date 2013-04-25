@@ -3,7 +3,8 @@
 
 Our approach to the DNS rebinding attack is derived from a standard time-varying attack, which can potentially take several minutes based on browser implementation of DNS Pinning. We discovered a previously undocumented variation which takes on the scale of tens of seconds. Instead of waiting for the pinned entries to expire, we flood the DNS cache with enough invalid entries to remove valid entries from the list. We plan to build on this idea and provide the attacker with a seamless browsing experience on the victim's internal server. We will retrieve the data from the victim's server (similar to existing scraping methods). Then we will allow the attacker to click links, take actions, and submit forms by sending the data to the victim's browser (which is acting as a proxy) and instruct it to send the appropriate request to the server.
 
-We also plan to implement host discovery on the victim's internal network, so that no prior knowledge of the victim's network is required in order to execute the attack.
+\subsection{Malicious DNS server}
+Our system consists of a custom DNS server authoritative for the domain name takenoteswith.us. The DNS server keeps track of DNS requests and their source IP address. When the DNS server sees a request for the first time, it returns a IP address 54.224.61.225, which is the address of our apache web server. If the DNS server has seen the DNS requests from the same ip address twice or more, it knows that this DNS requests is initiated by the rebinding script. At this time, the the malicious DNS server will return an IP address of 127.0.0.1(Or whatever the attacker wants), which is the IP that the attacker wants it to bind to.
 
-
-
+\subsection{Rebinding based on DNS table flooding}
+To remove a pinned entry from the DNS entry table, we use DNS flooding technology. When 
