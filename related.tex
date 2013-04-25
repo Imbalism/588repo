@@ -1,0 +1,12 @@
+\section{Related Work}
+\label{sec:related}
+
+Jackson et al \cite{protectFromDNS} surveyed a number of new DNS rebinding attacks that exploit interactions between browsers and their plug-ins. Many of the attack vectors described in this paper have been closed since its publication. Also, the paper merely described potential uses for this attack, whereas we plan to implement an actual attack that can be used to interact with the victim's web server.
+
+Other tools have been created which take different approaches to DNS rebinding, and have different intended uses. One tool, called Rebind \cite{rebind}, implements the multiple A record DNS rebinding attack. However, since the multiple A record attack is only possible when all the records are public IP addresses, this kind of attack cannot be used on local addresses. The author worked within this limitation, and made the target of the attack the victim's router's public IP. Our approach does not have this limitation, and we will be able to gain access to more sensitive information by utlizing local IP addresses.
+
+Bryne also demonstrated how to turn a victim's browswer into a proxy using a standard time-varying and plug-in attack \cite{blackhat}. However, those attacks have their limitations: standard time-varying attacks potentially require several minutes to complete due to DNS pinning. The plug-in attack requires the user to have an old version of a browser plug-in installed, like Java or Flash Player. Such vulnerabilities have been patched out of most if not all modern versions of the plug-ins.
+
+ref 18 from protectFromDNS - js web server scannning \cite{grossman} xyz.
+
+puppetnets \cite{puppetnets} xyz.

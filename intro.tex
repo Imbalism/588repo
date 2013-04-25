@@ -1,0 +1,5 @@
+\section{Introduction}
+\label{sec:intro}
+
+DNS rebinding attacks circumvent the same-origin policy of web browsers. This leaves the browsers vulnerable to being made into open network proxies. While moderate effort has been put into preventing these attacks, there are still a number of open attack vectors. A DNS rebinding attack is particularly powerful for two main reasons. First, in order to initiate the attack, a victim merely needs to click on a link, a trivial task to accomplish. Second, once the victim's browser has been compromised, the attacker has open access to the victim's internal network using the victim's IP. Many existing DNS rebinding techniques will simply scrape internal websites and return it to the attacker, which could include sensitive information, company secrets, etc. There are a number of other potential uses of this vulnerability \cite{protectFromDNS}, which are out of the scope of this paper. However, we believe it is also possible to establish a fully interactive session between the attacker and the victim's web server, allowing the attacker to submit forms and perform actions on the website on the behalf of the victim. 
+
