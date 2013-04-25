@@ -13,6 +13,8 @@ In early 2013, the Chromium community has increased the size of DNS cache from 1
 Another approach of DNS rebinding is based on multiple A records attack. This attack needs only a small amount of time due to the number of packets transmitted, however this attack has certain limitations, we will discuss it in the next subsection.
 
 \subsection{Impact}
-We now evaluate the impact of our attack against other DNS rebinding approaches. As mentioned in the last section, the multiple DNS record approach has the advantage of using less time to launch. However, it has several limitations on its impacts. 1) The rebinded IP address cannot be an internal IP address, otherwise the browser will priorize it and select it in the first place which results in a failure in DNS rebinding.  2) The attacker cannot change the rebinded IP address on the fly. 
+We now evaluate the impact of our attack against other DNS rebinding approaches. As mentioned in the last section, the multiple DNS record approach has the advantage of using less time to launch. However, it has several limitations on its impacts. 1) The rebinded IP address cannot be an internal IP address, otherwise the browser will priorize it and select it in the first place which results in a failure in DNS rebinding. 2) The attacker cannot change the rebinded IP address on the fly, which makes it unable to scan the subnet. 
 
-Being unable to rebind to an internal IP address greatly limit the impact that multiple A records attack can achieve.
+For time-varying attack, although it is possible to bind to an internal IP address, it is also hard to change the rebinded IP address on the fly due to the extremly long launching time. 
+
+In our experiement, we are able to use FireDrill to rebind the domain name to an internal IP address to build a interactive session. Also, we are able to dynamically change the IP address during an attack. The attacker has the ability to navigate through the entire subnet instead of just one single IP address.
