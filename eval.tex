@@ -27,13 +27,12 @@ Our attack needs the victim's browser to act as a proxy. Thus it requires the vi
 \end{figure}
 
 \subsection{Changing the Content of Internal Wiki}
-Now we demonstrate how to use FireDrill to access a victim's internal wiki. 
+Now we demonstrate how to use FireDrill to access a victim's internal wiki. Nowadays most of the companies have internal Wikis that contains extremly sensitive information and is only accessible through the company's local network or VPN. By building a session using the employee's browser as a proxy, the attacker could gain not only the full access to the company's Wiki, but also the ability to change the content of it. In realwold scenario the attacker would probably add malicious links into the Wiki and make it looks like internal tools.
 
-Reference the figure like this: Figure \ref{fig:oldrevisions}.
 \begin{figure}[h]
 \centering
 \includegraphics[width=0.8\columnwidth]{oldrevisions.png}
-\caption{\textbf{xyz.} xyz}
+\caption{The attacker can change the content of the company wiki anonymously, the revision history shows that the author of change was the victim's local IP.}
 \label{fig:oldrevisions}
 \end{figure}
 
