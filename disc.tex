@@ -1,7 +1,30 @@
 \section{Discussion}
 \label{sec:disc}
 
-defenses and future work
+Many in the security community consider DNS rebinding attacks to be dead. However, we aimed to show in this work that there are ongoing developments in the area, and that DNS rebinding attacks are still possible on modern hardware and software configurations. Along with motivating further work on DNS rebinding, we hope to introduce some preliminary defenses against the particular techniques we proposed in this paper.
+
+\subsection{Defense Against DNS Rebinding}
+
+A significant amount of work has been done in the area to defend against DNS rebinding attacks at each stage of the process. Browsers, plug-ins, DNS resolvers, firewalls, and servers can all be augmented to help defend against the attack \cite{protectFromDNS}. Many of the most promising defenses have been implemented, such as DNS pinning and patching many of the plug-in vulnerabilities.
+
+\subsection{Defense Against DNS Cache Flooding}
+
+DNS cache flooding is a new method of forcing the second DNS lookup which is crucial to the success of a DNS rebinding attack. We demonstrated that it is possible to use this technique on modern browsers, but we believe a few simple provisions will be able to successfully defend against it. 
+
+\begin{itemize}
+\item \emph{Increase Cache Size.} Making the cache large enough that cache flooding takes prohibitively long is a very practical approach. However, it is not clear whether this will prevent this attack in its entirety, but rather make it impractical. There are also performance concerns involved with scaling up the DNS cache that should be taken into account before adopting this approach. 
+\item \emph{Smarter Cache Eviction.} Cache flooding is made possible by the fact that invalid entries are being inserted into the table, which evict valid entries. The entries are invalid because the requests disobey same-origin policy, so an attempt resolve them should not occur. If the browser insists on inserting these invalid entries to the DNS cache, they should atleast be the first to be evicted when the cache is full.
+\end{itemize}
+
+\subsection{Future Work}
+
+FireDrill brings together many existing and novel ideas in order to demonstrate a very powerful DNS rebinding attack. Ensuring that the malicious DNS, web server, attacker interface, and other pieces are working in unison is a complex task. Spending some time automating the process of launching these utilities and monitoring for potential victims could reveal some opportunities to improve the efficiency and impact of the attack as a whole.
+
+Many of the original attack vectors of DNS rebinding achieved nearly instantaneous execution, but have since been closed and patched. At this point, we are able to achieve a DNS rebinding attack on modern browsers in ~10 seconds. While this is an improvement over alternative approaches, it can still be a prohibitively long duration to wait.  The defense strategy for DNS rebinding focuses on preventing the browser from doing a second DNS lookup. Exploring new ways of circumventing defenses could lead to a new, faster, form of the attack.
+
+The impact of this and other DNS rebinding attacks could be expanded by examining the potential for using cookies during the attack. If a cookie could be used to authenticate as the victim when accessing either internal or external websites, the breadth of the attack could be amplified. Doing so would eliminate otherwise challenging steps such as using social engineering to gain access to authentication credentials.
+
+We have outlined two promising defenses to the DNS cache flooding approach. Both fixes rely on browser developers to change DNS cache behavior. While we believe the best approach to be defending at the source, the cache, it is possible that a proper defense to this technique could be employed elsewhere in the configuration.
 
 
 
