@@ -17,4 +17,23 @@ For time-varying attack, although it is possible to bind to an internal IP addre
 In our experiement, we are able to use FireDrill to rebind the domain name to an internal IP address to build a interactive session. Also, we are able to dynamically change the IP address during an attack. The attacker has the ability to navigate through the entire subnet instead of just one single IP address.
 
 \subsection{Making The Victim Stay}
-Our attack needs the victim's browser to act as a proxy. Thus it requires the victim to stay in the page for the attacker to have access to it. In order to do that, we designed a ``pending download`` page that ask the user to stay in the page for two minutes for the attack to launch.
+Our attack needs the victim's browser to act as a proxy. Thus it requires the victim to stay in the page for the attacker to have access to it. In order to do that, we designed a ``pending download`` page \ref{fig:download} that ask the victim to stay in the page for two minutes to download a file. While the victim is waiting for the download countdown, the Javascript proxy is actually running in the background for the attacker to navigate through the internal websites.
+
+\begin{figure}[h]
+\centering
+\includegraphics[width=0.8\columnwidth]{download.png}
+\caption{The download page that a victim is first connecting to. While waiting for the file to be downloaded, the javascript is running in the the background as a proxy.}
+\label{fig:download}
+\end{figure}
+
+\subsection{Changing the Content of Internal Wiki}
+Now we demonstrate how to use FireDrill to access a victim's internal wiki. 
+
+Reference the figure like this: Figure \ref{fig:oldrevisions}.
+\begin{figure}[h]
+\centering
+\includegraphics[width=0.8\columnwidth]{oldrevisions.png}
+\caption{\textbf{xyz.} xyz}
+\label{fig:oldrevisions}
+\end{figure}
+
