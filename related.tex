@@ -7,7 +7,11 @@ Jackson et al \cite{protectFromDNS} surveyed a number of previously undiscovered
 
 Other tools have been created which take different approaches to DNS rebinding, and have different intended uses. One tool, called Rebind \cite{rebind}, implements the multiple A record DNS rebinding attack. However, since the multiple A record attack is only possible when all the records are public IP addresses, this kind of attack cannot be used on local addresses. The author worked within this limitation, and made the target of the attack the victim's router's public IP address. This attack vector relies on exploiting default passwords on the router hardware, and the frequency with which the default credentials are left unchanged. Our approach does not require using only public IP addresses because at its root, our approach is not a multiple A record attack, it is a time-varying attack.  We are able to gain access to the entire intranet via binding to local IP addresses.
 
-Byrne also demonstrated how to turn a victim's browser into a proxy using a standard time-varying and plug-in attack \cite{blackhat}. However, those attacks have their limitations: standard time-varying attacks potentially require several minutes to complete due to DNS pinning. Our approach accomplishes a similar result, while requiring a fraction of the time. The vulnerabilities that enable a plug-in attack have been mostly closed, and thus require the user to have an old version of a browser plug-in installed, such as Java or Flash Player. Such vulnerabilities have been patched out of most if not all modern versions of the plug-ins.
+Byrne also demonstrated how to turn a victim's browser into a web proxy using a standard time-varying and plug-in attack \cite{blackhat}.
+However, those attacks have their limitations: standard time-varying attacks potentially require several minutes to complete due to DNS pinning.
+Our approach accomplishes a similar result, while requiring only a fraction of the time. 
+The vulnerabilities that enable a plug-in attack have been mostly fixed, and thus require the user to have an old version of a browser plug-in installed, such as Java or Flash Player.
+Such vulnerabilities have been patched out of most if not all modern versions of the plug-ins.
 
 Finding web servers on the victim's intranet is a well-solved problem. It has been demonstrated by scanning IP addresses in JavaScript and monitoring responses\cite{grossman}, and various host-name-guessing techniques\cite{protectFromDNS}. Thus, it is not a focus of this work.
 
