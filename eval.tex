@@ -19,7 +19,7 @@ In our experiement, we are able to use FireDrill to rebind the domain name to an
 \subsection{Making The Victim Stay}
 Our attack needs the victim's browser to act as a proxy. Thus it requires the victim to stay in the page for the attacker to have access to it. In order to do that, we designed a ``pending download`` page \ref{fig:download} that ask the victim to stay in the page for two minutes to download a file. While the victim is waiting for the download countdown, the JavaScript proxy is actually running in the background for the attacker to navigate through the internal websites. While it is often challenging to convince a user to stay on a website for such a long duration, we show that some scenarios facilitate such a requirement.
 
-\begin{figure}[h]
+\begin{figure}[ht]
 \centering
 \includegraphics[width=0.8\columnwidth]{download.png}
 \caption{\textbf{Attack page.} The page that a victim first connects to. The user believes he is waiting for a file download to start on a free file-hosting website. While waiting for the file to be downloaded, the JavaScript is running in the the background as a proxy.}
@@ -29,7 +29,7 @@ Our attack needs the victim's browser to act as a proxy. Thus it requires the vi
 \subsection{Changing the Content of Internal Wiki}
 Now we demonstrate how to use FireDrill to access a victim's internal wiki. Many organizations have internal Wikis that contains extremly sensitive information and is only accessible through the company's local network or VPN. By building a session using the employee's browser as a proxy, the attacker could not only gain full access to the company's Wiki, but also the ability to change the content of it. Moreover, the modifications are done using the victim's IP address, adding to the anonymity of the attack, as shown in Figure \ref{fig:oldrevisions} In a real-world scenario, the attacker could potentially add malicious links into the Wiki in order to launch subsequent attacks.
 
-\begin{figure}[h]
+\begin{figure}[hb]
 \centering
 \includegraphics[width=0.8\columnwidth]{oldrevisions.png}
 \caption{\textbf{Victim's web site's revision history.} The attacker can change the content of the company wiki anonymously. the revision history shows that the author of change was the victim's local IP address.}
