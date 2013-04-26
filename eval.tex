@@ -1,9 +1,6 @@
 \section{Evaluation}
 \label{sec:eval}
-
-We developed a proof-of-concept exploits for DNS flooding based rebinding vulnerabilities using pure Javascript and HTML5. Our system consists of a custom DNS server authoritative for takenoteswith.us.
-
-We measured our DNS rebinding attack by two primary factors. We analyzed the \emph{time to launch} of the attack and the \emph{impact} of the attack. We compared it two DNS rebinding mechanisms we've implemented. 
+We measured our DNS rebinding attack by two primary factors. We analyzed the \emph{time to launch} and the \emph{impact} of the attack. We then compared it to other two DNS rebinding mechanisms. 
 
 \subsection{Time to Launch}
 To protect from a time-varying attack that is able to establish an interactive session between the malicious server and the broswer, most modern browers have implemented DNS pinning that pin a DNS record for a period of time. At this time, a time-varying attack would take ~160 seconds to launch according to our experiment on the latest Chrome browser. However, by flooding the DNS table, we found that in the current Chrome implementation, if a DNS record is kicked out from the cache, the pinning time would dramatically decrease. We found that in our attack, only ~10 seconds is needed to launch the attack on a browser that have 100 entries. 
@@ -18,3 +15,6 @@ We now evaluate the impact of our attack against other DNS rebinding approaches.
 For time-varying attack, although it is possible to bind to an internal IP address, it is also hard to change the rebinded IP address on the fly due to the extremly long launching time. 
 
 In our experiement, we are able to use FireDrill to rebind the domain name to an internal IP address to build a interactive session. Also, we are able to dynamically change the IP address during an attack. The attacker has the ability to navigate through the entire subnet instead of just one single IP address.
+
+\subsection{Making The Victim Stay}
+Our attack needs the victim's browser to act as a proxy. Thus it requires the victim to stay in the page for the attacker 
